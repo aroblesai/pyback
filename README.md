@@ -184,15 +184,19 @@ make docker-logs
 
    - Open http://localhost:8000/docs for Swagger UI
 
-### 4. Database Setup
+### 4. Database Migrations
 
-Creating the PostgreSQL migrations:
+The application uses Alembic for database migrations and the setup is configured in the `alembic.ini` file.
+
+In the initial setup, the "Initial migration" is already created.
+
+For creating and applying the PostgreSQL migrations:
 
 1. Make changes to your database models
-2. Initialize migration with message:
+2. Create a new migration with message
 
 ```bash
-docker compose exec app uv run alembic revision --autogenerate -m "Initial migration"
+docker compose exec app uv run alembic revision --autogenerate -m "New migration"
 ```
 
 or
@@ -203,7 +207,7 @@ make db-revision
 
 > ✍ **Note**:
 >
-> Migrations will be automatically applied when you start the application using Docker Compose so there is no need to run `uv run alembic upgrade head` manually.
+> Migrations will be automatically applied when you start the application using Docker Compose so there is no need to run `alembic upgrade head` manually.
 
 ### 5. Run Tests
 
