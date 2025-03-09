@@ -131,10 +131,9 @@ The project uses two main configuration files:
 > The pair `POSTGRES_USER` and `POSTGRES_PASSWORD` are used to create the database and the user. The pair `PGUSER` and `PGPASSWORD` are used to connect to the database.
 > Make sure port values and database parameters are consistent with your `.env` file.
 
-3. Install package
+3. Install package in regular mode
 
 ```bash
-# Install package in regular mode
 uv pip install -e .
 ```
 
@@ -190,7 +189,7 @@ make docker-logs
 Creating the PostgreSQL migrations:
 
 1. Make changes to your database models
-2. Generate migration:
+2. Initialize migration with message:
 
 ```bash
 docker compose exec app uv run alembic revision --autogenerate -m "Initial migration"
@@ -199,7 +198,6 @@ docker compose exec app uv run alembic revision --autogenerate -m "Initial migra
 or
 
 ```bash
-# Initialize migration with message
 make db-revision
 ```
 
