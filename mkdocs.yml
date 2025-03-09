@@ -1,0 +1,10 @@
+site_name: My Async FastAPI Backend Project
+site_url: https://yourdomain.com
+theme:
+  name: material
+dev_addr: localhost:8001
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - API Documentation: api.md
+  - Changelog: CHANGELOG.md

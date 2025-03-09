@@ -1,0 +1,20 @@
+services:
+  test:
+    container_name: ${COMPOSE_PROJECT_NAME}-test
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: ["pytest"]
+    env_file:
+      - .env
+    volumes:
+      - ./cover:/usr/app/cover
+    networks:
+      - backend-network
+    depends_on:
+      app:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy

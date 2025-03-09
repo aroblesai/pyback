@@ -1,0 +1,80 @@
+[app]
+# Optional: SERVER_HOST. Default is "app"
+# Optional: SERVER_PORT. Default is 8000
+# Optional: SERVER_LOG_LEVEL. Default is "info"
+# Optional: SERVER_RELOAD can be set to enable or disable uvicorn server reload. Default is false
+SERVER_HOST = "app"
+SERVER_PORT = 8000
+SERVER_LOG_LEVEL = "info"
+SERVER_RELOAD = true
+
+
+[logging]
+# Optional: Global logging level can be set to "TRACE", "DEBUG", "INFO", "SUCCESS", "WARNING", "ERROR", "CRITICAL". Default is "INFO"
+level = "INFO"
+
+[auth]
+# Optional: JWT_ALGORITHM can be set to "HS256", "HS384", "HS512", "RS256", "RS384", "RS512". Default is "HS256"
+# Optional: JWT_SESSION_TTL_MIN is the fallback value for session TTL (number of minutes). Default is 60
+# Optional: JWT_EXPIRE_MINUTES is the number of minutes before an access token expires. If not set, the access token will expire with JWT_SESSION_TTL_MIN. Default is None
+JWT_ALGORITHM = "HS256"
+JWT_SESSION_TTL_MIN = 60
+JWT_EXPIRE_MINUTES = 1440
+
+[logging.console]
+# Optional: enabled. Enable console logging. Default is true
+# format. Format of the log message.
+# Optional: colorize. Colorize the output. Default is true
+# Optional: diagnose. Enable diagnose mode. Default is true
+# Optional: backtrace. Enable backtrace. Default is true
+enabled = true
+format = "<light-red>{time:YYYY-MM-DD HH:mm:ss}</light-red> | <cyan>{name}:{function}:{line}</cyan> | <level>{level} - {message}</level>"
+colorize = true
+diagnose = true
+backtrace = true
+
+[logging.file]
+# Optional: enabled. Enable file logging. Default is false
+# Optional: path. Path to the log file.
+# format. Format of the log message.
+# Optional: rotation. Rotate the log file. Default is "10 MB"
+# Optional: retention. Retention period. Default is "1 week"
+# Optional: compression. Compression format. Default is "zip"
+enabled = true
+path = "logs/app.log"
+format = "{time:YYYY-MM-DD HH:mm:ss} | {name}:{function}:{line} | {level} | {message}"
+rotation = "10 MB"
+retention = "1 week"
+compression = "zip"
+
+[logging.json_file]
+# Optional: enabled. Enable json logging sink. Default is false
+# Optional: path. Path to the log file.
+# Optional: rotation. Rotate the log file. Default is "10 MB"
+# Optional: retention. Retention period. Default is "1 week"
+# Optional: compression. Compression format. Default is "zip"
+enabled = true
+path = "logs/app.json"
+rotation = "10 MB"
+retention = "1 week"
+compression = "zip"
+
+[db.postgres]
+# Optional: POSTGRES_HOST. Host of the postgres database. Default is "db"
+# Optional: POSTGRES_PORT. Port of the postgres database. Default is 5432
+# Optional: POSTGRES_DB. Database name. Default is "postgres"
+# Optional: PGUSER. User of the postgres database. Default is "postgres"
+# Optional: DEBUG. Enable debug mode. Default is false
+POSTGRES_HOST = "db"
+POSTGRES_PORT = 5432
+POSTGRES_DB = "pyback"
+PGUSER = "pybackuser"
+DEBUG = false
+
+[db.redis]
+# Optional: REDIS_HOST. Host of the redis database. Default is "redis"
+# Optional: REDIS_PORT. Port of the redis database. Default is 6379
+# Optional: REDIS_DB. Database number. Default is 0
+REDIS_HOST = "redis"
+REDIS_PORT = 6379
+REDIS_DB = 0
